@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sammy M | Developer Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+  --bg:#080b18;
+  --panel:#11172a;
+  --text:#f5f7ff;
+  --muted:#b0bbd2;
+  --cyan:#42e8ff;
+  --purple:#a78bfa;
+  --pink:#ff65c3;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{
+  font-family:Inter,sans-serif;background:var(--bg);
+  color:var(--text);line-height:1.7;overflow-x:hidden
+}
+a{text-decoration:none;color:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+#code-bg{
+  position:fixed;inset:0;width:100%;height:100%;
+  z-index:-2;pointer-events:none;opacity:.34
+}
+body:before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 15% 15%,#582bba35,transparent 40%),
+    radial-gradient(ellipse at 85% 40%,#0089a82a,transparent 38%),
+    linear-gradient(180deg,#080b18e8,#080b18f5)
+}
+header{
+  position:sticky;top:0;z-index:20;padding:16px 7%;
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+  background:#080b18d9;backdrop-filter:blur(18px);
+  border-bottom:1px solid #ffffff13
+}
+.logo{font-size:1.4rem;font-weight:800}
+.logo span{color:var(--cyan)}
+nav{display:flex;gap:23px;flex-wrap:wrap}
+nav a{font-size:.88rem;color:var(--muted);transition:.2s}
+nav a:hover{color:var(--cyan)}
+section{padding:90px 8%;position:relative}
+.hero{
+  min-height:88vh;display:grid;
+  grid-template-columns:1.1fr .9fr;align-items:center;gap:45px;
+  max-width:1500px;margin:auto
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:8px 14px;border:1px solid #42e8ff50;
+  background:#42e8ff0c;border-radius:30px;
+  color:var(--cyan);font-size:.85rem;margin-bottom:23px
+}
+.dot{width:8px;height:8px;background:#5cffb1;border-radius:50%;
+  box-shadow:0 0 12px #5cffb1}
+h1{font-size:clamp(2.7rem,5.5vw,5rem);line-height:1.12;letter-spacing:-2px}
+.gradient{
+  background:linear-gradient(90deg,var(--cyan),#9b9aff,var(--pink));
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.hero p{color:var(--muted);margin:22px 0;max-width:590px}
+.actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:27px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 20px;border-radius:10px;font-weight:700;font-size:.9rem;
+  transition:transform .2s,box-shadow .2s;border:1px solid #42e8ff65;
+  background:linear-gradient(110deg,#42e8ff,#8b9dff);color:#080b18
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 28px #42e8ff30}
+.btn.ghost{background:#ffffff08;color:white;border-color:#ffffff30}
+.hero-art{position:relative;min-width:0}
+.hero-image{
+  width:100%;height:340px;object-fit:cover;display:block;
+  border-radius:22px;border:1px solid #42e8ff66;
+  box-shadow:0 0 45px #613cf02a,0 25px 80px #0008
+}
+.image-frame{position:relative;padding:12px}
+.image-frame:before{
+  content:"";position:absolute;inset:0;border-radius:25px;
+  background:linear-gradient(135deg,#42e8ff60,#b77cff20,#ff65c350);
+  z-index:-1;filter:blur(2px)
+}
+.code-window{
+  position:absolute;bottom:-35px;left:-24px;width:85%;
+  background:#0c1121f5;backdrop-filter:blur(15px);
+  border:1px solid #ffffff25;border-radius:14px;overflow:hidden;
+  box-shadow:0 20px 50px #0008
+}
+.window-top{display:flex;gap:7px;padding:12px;border-bottom:1px solid #ffffff12}
+.bubble{width:9px;height:9px;border-radius:50%}
+.code{
+  padding:17px 20px;font: .83rem/1.9 "Fira Code",monospace;
+  color:#c8d4f3;white-space:pre-wrap
+}
+.cyan{color:var(--cyan)}.pink{color:var(--pink)}.purple{color:var(--purple)}
+.float-tag{
+  position:absolute;right:-8px;top:20px;padding:12px 16px;
+  border:1px solid #a78bfa65;background:#17112ceF;border-radius:12px;
+  color:#d8c8ff;font-size:.85rem;box-shadow:0 10px 30px #0006
+}
+.section-head{text-align:center;margin-bottom:38px}
+.kicker{font: .78rem "Fira Code",monospace;color:var(--cyan);letter-spacing:2px}
+h2{font-size:clamp(2rem,4vw,3rem);line-height:1.2;margin:10px 0}
+.subtitle{color:var(--muted);max-width:650px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.card{
+  background:linear-gradient(145deg,#161d33eF,#0e1426f5);
+  border:1px solid #ffffff17;border-radius:17px;padding:25px;
+  transition:.25s;min-width:0
+}
+.card:hover{transform:translateY(-5px);border-color:#42e8ff85;
+  box-shadow:0 15px 40px #0005}
+.card h3{font-size:1.15rem;margin:10px 0}
+.card p{color:var(--muted);font-size:.94rem}
+.icon{
+  width:49px;height:49px;display:grid;place-items:center;
+  font-size:1.5rem;border-radius:13px;
+  background:linear-gradient(135deg,#42e8ff20,#a78bfa27);
+  border:1px solid #42e8ff30
+}
+.skills{display:flex;flex-wrap:wrap;justify-content:center;gap:13px}
+.skill{
+  padding:11px 17px;border:1px solid #ffffff20;
+  background:#ffffff07;border-radius:11px;color:#dce8ff;
+  transition:.2s
+}
+.skill:hover{border-color:var(--cyan);color:var(--cyan)}
+.skill small{color:#8e9ab7}
+.project-img{
+  width:100%;height:190px;object-fit:cover;display:block;
+  border-radius:11px;margin-bottom:18px;border:1px solid #ffffff18
+}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
+.tags span{
+  font: .75rem "Fira Code",monospace;color:var(--cyan);
+  padding:5px 9px;border-radius:6px;background:#42e8ff0c
+}
+.project-link{color:var(--cyan);font-size:.9rem;font-weight:600}
+.timeline{max-width:780px;margin:auto;border-left:2px solid #42e8ff70;padding-left:25px}
+.timeline .card{margin-bottom:20px;position:relative}
+.timeline .card:before{
+  content:"";position:absolute;left:-33px;top:28px;width:13px;height:13px;
+  background:var(--cyan);border-radius:50%;box-shadow:0 0 15px #42e8ff
+}
+.contact{
+  max-width:850px;margin:auto;text-align:center;
+  padding:42px 25px;border:1px solid #42e8ff35;border-radius:22px;
+  background:radial-gradient(ellipse at top,#29356a55,transparent 70%),#101629eF
+}
+.contact p{color:var(--muted);margin:15px auto;max-width:600px}
+footer{text-align:center;color:var(--muted);padding:25px;
+  border-top:1px solid #ffffff15;font-size:.85rem}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.reveal.show{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:65px;gap:55px}
+  .hero-art{max-width:600px;width:100%;margin:0 auto 25px}
+  .hero-image{height:300px}
+}
+@media(max-width:620px){
+  header{padding:14px 5%;align-items:flex-start;flex-direction:column}
+  nav{gap:12px}
+  nav a{font-size:.79rem}
+  section{padding:65px 6%}
+  .grid{grid-template-columns:1fr}
+  .hero{min-height:auto;padding-top:60px}
+  h1{letter-spacing:-1px}
+  .hero-image{height:230px}
+  .code-window{left:-5px;width:95%;bottom:-45px}
+  .float-tag{right:-3px;top:-12px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{scroll-behavior:auto!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<canvas id="code-bg" aria-hidden="true"></canvas>
+
+<header>
+  <a class="logo" href="#home">SAMMY<span>.DEV</span></a>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="reveal">
+    <div class="eyebrow"><span class="dot"></span> SECOND-YEAR BCA STUDENT</div>
+    <h1>Hey, I'm<br><span class="gradient">Sammy M.</span><br>Code. Create. Innovate.</h1>
+    <p>
+      An aspiring developer passionate about programming, web development
+      and Artificial Intelligence. I turn ideas into projects while learning
+      new technologies and exploring what's possible with code.
+    </p>
+    <div class="actions">
+      <a class="btn" href="#projects">Explore My Work ↗</a>
+      <a class="btn ghost" href="#contact">Let's Connect</a>
+    </div>
+  </div>
+
+  <div class="hero-art reveal">
+    <div class="image-frame">
+      <img class="hero-image"
+        src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85"
+        alt="Computer circuit board and technology"
+        onerror="this.style.background='#172440';this.style.minHeight='280px'">
+    </div>
+    <div class="float-tag">⚡ Building my future</div>
+    <div class="code-window">
+      <div class="window-top">
+        <span class="bubble" style="background:#ff657a"></span>
+        <span class="bubble" style="background:#ffd166"></span>
+        <span class="bubble" style="background:#56e39f"></span>
+        <span style="margin-left:8px;color:#9eacc9;font-size:.75rem">sammy.py</span>
+      </div>
+      <div class="code"><span class="purple">class</span> <span class="cyan">Developer</span>:
+  name = <span class="pink">"Sammy M"</span>
+  year = <span class="pink">"BCA Year 2"</span>
+  passion = <span class="pink">"Technology"</span>
+
+  <span class="purple">def</span> <span class="cyan">build_future</span>(self):
+    <span class="purple">return</span> <span class="pink">"Keep Learning 🚀"</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-head reveal">
+    <div class="kicker">// WHO AM I?</div>
+    <h2>About <span class="gradient">Me</span></h2>
+    <p class="subtitle">Curious mind. Creative thinker. Future technologist.</p>
+  </div>
+  <div class="grid">
+    <article class="card reveal">
+      <div class="icon">💻</div>
+      <h3>My Journey</h3>
+      <p>I'm Sammy M, a second-year Bachelor of Computer Applications student.
+      I'm strengthening my programming fundamentals and exploring software
+      and web development through hands-on learning.</p>
+    </article>
+    <article class="card reveal">
+      <div class="icon">🤖</div>
+      <h3>My Vision</h3>
+      <p>I'm interested in AI and Machine Learning, participating in hackathons,
+      and building useful technology. My long-term academic goal is to pursue
+      a PhD.</p>
+    </article>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-head reveal">
+    <div class="kicker">// TECH STACK</div>
+    <h2>My <span class="gradient">Skills</span></h2>
+    <p class="subtitle">Technologies I work with or am currently learning.</p>
+  </div>
+  <div class="skills reveal">
+    <span class="skill">☕ Java</span>
+    <span class="skill">🐍 Python</span>
+    <span class="skill">🌐 HTML5</span>
+    <span class="skill">🎨 CSS3</span>
+    <span class="skill">⚡ JavaScript</span>
+    <span class="skill">🖥️ Web Development</span>
+    <span class="skill">🧠 AI / ML <small>· Learning</small></span>
+    <span class="skill">🔧 Git & GitHub <small>· Learning</small></span>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-head reveal">
+    <div class="kicker">// THINGS I'M BUILDING</div>
+    <h2>Featured <span class="gradient">Projects</span></h2>
+    <p class="subtitle">A growing collection of my learning and development work.</p>
+  </div>
+  <div class="grid">
+    <article class="card reveal">
+      <img class="project-img"
+        src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80"
+        alt="Programming code on a computer screen" loading="lazy">
+      <h3>🚦 Traffic Safety Detection</h3>
+      <p>A prototype exploring computer vision for road-safety monitoring.
+      The AI detection integration is still in progress.</p>
+      <div class="tags"><span>AI / ML</span><span>Computer Vision</span><span>Web</span></div>
+      <a class="project-link" href="https://github.com/25bca107-svg">View GitHub ↗</a>
+    </article>
+
+    <article class="card reveal">
+      <img class="project-img"
+        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80"
+        alt="Laptop and web development workspace" loading="lazy">
+      <h3>🌐 Personal Portfolio</h3>
+      <p>A responsive portfolio to present my skills, education, projects
+      and journey as a developer.</p>
+      <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+      <a class="project-link" href="https://github.com/25bca107-svg">View GitHub ↗</a>
+    </article>
+
+    <article class="card reveal">
+      <img class="project-img"
+        src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=900&q=80"
+        alt="Python programming concept" loading="lazy">
+      <h3>🐍 Python Practice</h3>
+      <p>Small programs and coding exercises to strengthen my understanding
+      of Python and problem-solving fundamentals.</p>
+      <div class="tags"><span>Python</span><span>Programming</span></div>
+      <a class="project-link" href="https://github.com/25bca107-svg">View GitHub ↗</a>
+    </article>
+
+    <article class="card reveal">
+      <img class="project-img"
+        src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=80"
+        alt="Artificial intelligence visualization" loading="lazy">
+      <h3>🧠 AI & ML Exploration</h3>
+      <p>Learning about artificial intelligence and machine learning and
+      exploring ideas for future projects and hackathons.</p>
+      <div class="tags"><span>AI</span><span>Machine Learning</span></div>
+      <a class="project-link" href="https://github.com/25bca107-svg">Explore GitHub ↗</a>
+    </article>
+  </div>
+  <p style="text-align:center;color:var(--muted);margin-top:22px;font-size:.85rem">
+    Update these project links and descriptions to match your actual repositories and progress.
+  </p>
+</section>
+
+<section id="education">
+  <div class="section-head reveal">
+    <div class="kicker">// MY LEARNING PATH</div>
+    <h2><span class="gradient">Education</span></h2>
+  </div>
+  <div class="timeline reveal">
+    <article class="card">
+      <div class="icon">🎓</div>
+      <h3>Bachelor of Computer Applications (BCA)</h3>
+      <p>Currently pursuing second year</p>
+      <p>Developing knowledge in computer applications, programming,
+      and modern technologies.</p>
+    </article>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact reveal">
+    <div class="kicker">// LET'S BUILD SOMETHING</div>
+    <h2>Have an idea? <span class="gradient">Let's Connect.</span></h2>
+    <p>I'm interested in learning, exploring technology, and collaborating
+    on projects. Feel free to reach out!</p>
+    <div class="actions" style="justify-content:center">
+      <a class="btn" href="mailto:sammymurugan21@gmail.com">✉ Email Me</a>
+      <a class="btn ghost" href="https://github.com/25bca107-svg"
+         target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/sammy-m-56275b3a9/"
+         target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>Designed & built by <span style="color:#42e8ff">Sammy M</span> ·
+  <span id="year"></span> · Keep learning, keep building ✨</p>
+</footer>
+
+<script>
+// Animated falling programming characters
+const canvas = document.getElementById("code-bg");
+const ctx = canvas.getContext("2d");
+const chars = "01{}[]</>;+=JAVA PYTHON AI ML";
+let columns = [], width, height, fontSize = 15;
+
+function resize() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = width * dpr;
+  canvas.height = height * dpr;
+  canvas.style.width = width + "px";
+  canvas.style.height = height + "px";
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  columns = Array.from(
+    {length: Math.ceil(width / fontSize)},
+    () => Math.random() * -height / fontSize
+  );
+}
+window.addEventListener("resize", resize);
+resize();
+
+function drawCode() {
+  ctx.fillStyle = "rgba(8, 11, 24, 0.13)";
+  ctx.fillRect(0, 0, width, height);
+  ctx.font = fontSize + "px monospace";
+
+  columns.forEach((y, i) => {
+    const char = chars[Math.floor(Math.random() * chars.length)];
+    ctx.fillStyle = i % 4 === 0 ? "#42e8ff" :
+                    i % 3 === 0 ? "#a78bfa" : "#5284c9";
+    ctx.fillText(char, i * fontSize, y * fontSize);
+    if (y * fontSize > height && Math.random() > 0.975) {
+      columns[i] = 0;
+    } else {
+      columns[i] += 0.28;
+    }
+  });
+  requestAnimationFrame(drawCode);
+}
+drawCode();
+
+// Reveal sections when scrolled into view
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target);
+    }
+  });
+}, {threshold: 0.12});
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
